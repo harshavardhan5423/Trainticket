@@ -37,7 +37,7 @@ jobs:
           run: mvn package
         
           #verify the war file
-        - name: verify 
+        - name: verfiy
           run: ls -l target/   
 
          #Deploy to tomcat
