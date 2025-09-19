@@ -29,9 +29,8 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@v1
         with:
           args: >
-            -Dsonar.projectKey=YOUR_PROJECT_KEY
-            -Dsonar.organization=YOUR_ORG
-            -Dsonar.host.url=YOUR_SONARQUBE_URL
+            -Dsonar.projectKey=TRAINTICKET
+            -Dsonar.host.url=SONAR_HOST_URL
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
 
