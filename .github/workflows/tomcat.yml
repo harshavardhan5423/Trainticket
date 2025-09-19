@@ -25,12 +25,13 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
 
-      - name: SonarQube Scan
+      - name: Run SonarQube Scan
         uses: sonarsource/sonarcloud-github-action@v1
+        env:
+             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=TRAINTICKET
-            -Dsonar.host.url=http://51.20.182.104:9000
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+           -Dsonar.projectKey=TRAINTICKET
+           -Dsonar.host.url=http://51.20.182.104:9000
 
 
