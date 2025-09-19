@@ -3,7 +3,7 @@ name: SonarQube Analysis
 on:
   push:
     branches: 
-    - master
+      - master
  
 jobs:
   sonarqube:
@@ -19,26 +19,28 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: validate with maven
+      - name: Validate with Maven
         run: mvn validate
 
-      - name: compile with maven
+      - name: Compile with Maven
         run: mvn compile
 
-      - name: test with maven
+      - name: Test with Maven
         run: mvn test
 
-      - name: package with maven
-        run:  mvn package 
+      - name: Package with Maven
+        run: mvn package 
 
-      - name: verify WAR file
+      - name: Verify WAR file
         run: ls -lh target/
+
+      # Optional: check if GitHub runner can reach your SonarQube server
+      - name: Test SonarQube connectivity
+        run: curl -v ${{ secrets.SONAR_HOST_URL }}
 
       - name: SonarQube analysis
         run: |
-         mvn clean verify sonar:sonar \
-         -Dsonar.projectKey=train-ticket-reservation \
-         -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-         -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
-
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=train-ticket-reservation \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
