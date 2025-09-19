@@ -30,7 +30,7 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=TRAINTICKET
-            -Dsonar.host.url=SONAR_HOST_URL
+            -Dsonar.host.url=http://51.20.182.104:9000
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
 
