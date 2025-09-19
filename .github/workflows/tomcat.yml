@@ -37,13 +37,13 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -B
 
-      # 5. Run SonarQube analysis
+  # 5. Run SonarQube analysis
       - name: SonarQube Scan
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Set this secret in your repo
-        run: mvn sonar:sonar \
-             -Dsonar.projectKey=TRAINTICKET \
-             -Dsonar.host.url=http://51.20.182.104:9000 \
-             -Dsonar.login=$SONAR_TOKEN
-
-
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # GitHub secret
+        run: |
+             mvn clean install sonar:sonar \
+               -Dsonar.projectKey=TRAINTICKET \
+              -Dsonar.host.url=http://51.20.182.104:9000 \
+              -Dsonar.login=$SONAR_TOKEN
+ 
